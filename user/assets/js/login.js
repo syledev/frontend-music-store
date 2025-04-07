@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Redirect to home page after 2 seconds
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = '/index.html';
                 }, 2000);
             } else {
                 // Show error message
@@ -109,7 +109,7 @@ function showToast(message, type = 'success') {
 $(document).ready(function() {
     // Kiểm tra nếu đã đăng nhập thì chuyển về trang chủ
     if (isLoggedIn()) {
-        window.location.href = '../index.html';
+        window.location.href = '/index.html';
     }
     
     // Gắn sự kiện submit cho form đăng nhập
@@ -128,14 +128,8 @@ $(document).ready(function() {
                 localStorage.setItem('rememberEmail', email);
             }
             
-            // Chuyển hướng sau đăng nhập
-            const redirectUrl = localStorage.getItem('redirectAfterLogin');
-            if (redirectUrl) {
-                localStorage.removeItem('redirectAfterLogin');
-                window.location.href = redirectUrl;
-            } else {
-                window.location.href = '../index.html';
-            }
+            // Chuyển hướng admin đến trang my-account vì không có trang dashboard
+            window.location.href = '/user/pages/my-account.html';
             return false;
         }
         
@@ -152,7 +146,7 @@ $(document).ready(function() {
                 localStorage.removeItem('redirectAfterLogin');
                 window.location.href = redirectUrl;
             } else {
-                window.location.href = '../index.html';
+                window.location.href = '/index.html';
             }
             return false;
         }

@@ -150,18 +150,18 @@ const products = [
 
 // Fallback product images
 const fallbackImages = {
-    'Guitar': '../assets/images/products/guitar-1.jpg',
-    'Piano': '../assets/images/products/piano-1.jpg',
-    'Trống': '../assets/images/products/drum-1.jpg',
-    'Violin': '../assets/images/products/violin-1.jpg',
-    'default': '../assets/images/products/default.jpg'
+    'Guitar': '../user/assets/images/products/guitar-1.jpg',
+    'Piano': '../user/assets/images/products/piano-1.jpg',
+    'Trống': '../user/assets/images/products/drum-1.jpg',
+    'Violin': '../user/assets/images/products/violin-1.jpg',
+    'default': '../user/assets/images/products/default.jpg'
 };
 
 // Load header and footer
 $(document).ready(function() {
     console.log("Document ready");
     
-    $("#header").load("/components/header.html", function() {
+    $("#header").load("../components/header.html", function() {
         console.log("Header loaded");
         // After header is loaded, check login status and update UI
         if (typeof updateAuthUI === 'function') {
@@ -169,7 +169,7 @@ $(document).ready(function() {
         }
     });
     
-    $("#footer").load("/components/footer.html", function() {
+    $("#footer").load("../components/footer.html", function() {
         console.log("Footer loaded");
     });
     

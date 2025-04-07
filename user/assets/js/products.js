@@ -4,7 +4,7 @@ const products = [
         id: 1,
         name: 'Đàn Guitar Acoustic Yamaha F310',
         price: 1500000,
-        image: '../assets/images/products/guitar-1.jpg',
+        image: '/user/assets/images/products/guitar-1.jpg',
         category: 'Guitar',
         rating: 4.5,
         reviewCount: 12
@@ -13,7 +13,7 @@ const products = [
         id: 2,
         name: 'Piano điện Casio CDP-S110',
         price: 12000000,
-        image: '../assets/images/products/piano-1.jpg',
+        image: '/user/assets/images/products/piano-1.jpg',
         category: 'Piano',
         rating: 4.8,
         reviewCount: 8
@@ -22,7 +22,7 @@ const products = [
         id: 3,
         name: 'Trống điện Roland TD-1DMK',
         price: 8000000,
-        image: '../assets/images/products/drum-1.jpg',
+        image: '/user/assets/images/products/drum-1.jpg',
         category: 'Trống',
         rating: 4.6,
         reviewCount: 15
@@ -31,7 +31,7 @@ const products = [
         id: 4,
         name: 'Đàn Guitar Classic Cordoba C5',
         price: 2500000,
-        image: '../assets/images/products/guitar-2.jpg',
+        image: '/user/assets/images/products/guitar-2.jpg',
         category: 'Guitar',
         rating: 4.7,
         reviewCount: 10
@@ -40,7 +40,7 @@ const products = [
         id: 5,
         name: 'Piano điện Yamaha CLP-735',
         price: 25000000,
-        image: '../assets/images/products/piano-2.jpg',
+        image: '/user/assets/images/products/piano-2.jpg',
         category: 'Piano',
         rating: 4.9,
         reviewCount: 6
@@ -49,7 +49,7 @@ const products = [
         id: 6,
         name: 'Trống Acoustic Pearl Export',
         price: 12000000,
-        image: '../assets/images/products/drum-2.jpg',
+        image: '/user/assets/images/products/drum-2.jpg',
         category: 'Trống',
         rating: 4.5,
         reviewCount: 9
@@ -58,7 +58,7 @@ const products = [
         id: 7,
         name: 'Đàn Guitar Bass Ibanez GSRM20',
         price: 3500000,
-        image: '../assets/images/products/guitar-3.jpg',
+        image: '/user/assets/images/products/guitar-3.jpg',
         category: 'Guitar',
         rating: 4.4,
         reviewCount: 7
@@ -67,7 +67,7 @@ const products = [
         id: 8,
         name: 'Piano điện Roland FP-30X',
         price: 15000000,
-        image: '../assets/images/products/piano-3.jpg',
+        image: '/user/assets/images/products/piano-3.jpg',
         category: 'Piano',
         rating: 4.7,
         reviewCount: 11
@@ -76,7 +76,7 @@ const products = [
         id: 9,
         name: 'Trống điện Alesis Nitro Mesh',
         price: 6000000,
-        image: '../assets/images/products/drum-3.jpg',
+        image: '/user/assets/images/products/drum-3.jpg',
         category: 'Trống',
         rating: 4.3,
         reviewCount: 13
@@ -85,7 +85,7 @@ const products = [
         id: 10,
         name: 'Đàn Guitar Electric Fender Stratocaster',
         price: 18000000,
-        image: '../assets/images/products/guitar-4.jpg',
+        image: '/user/assets/images/products/guitar-4.jpg',
         category: 'Guitar',
         rating: 4.8,
         reviewCount: 16
@@ -94,7 +94,7 @@ const products = [
         id: 11,
         name: 'Piano điện Kawai ES110',
         price: 18000000,
-        image: '../assets/images/products/piano-4.jpg',
+        image: '/user/assets/images/products/piano-4.jpg',
         category: 'Piano',
         rating: 4.6,
         reviewCount: 14
@@ -108,7 +108,7 @@ let filteredProducts = [...products];
 // Load header and footer
 $(document).ready(function() {
     // Load header
-    $("#header").load("../components/header.html", function() {
+    $("#header").load("/user/components/header.html", function() {
         if (typeof updateAuthUI === 'function') {
             updateAuthUI();
         }
@@ -116,7 +116,7 @@ $(document).ready(function() {
     });
     
     // Load footer
-    $("#footer").load("../components/footer.html", function() {
+    $("#footer").load("/user/components/footer.html", function() {
         console.log('Footer loaded');
         // Update copyright year after footer is loaded
         const yearElement = document.getElementById('current-year');
@@ -255,41 +255,46 @@ function loadProducts() {
         // Define action buttons based on user role
         const actionButtons = isAdmin 
             ? `
-                <a href="/pages/product-detail.html?id=${product.id}" class="btn btn-outline-primary w-100 mb-2">
-                    <i class="fas fa-info-circle me-1"></i> Chi tiết
-                </a>
+                <div class="d-flex justify-content-center mt-auto">
+                    <a href="/user/pages/product-detail.html?id=${product.id}" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-eye"></i> Chi tiết
+                    </a>
+                </div>
               `
             : `
-                <a href="/pages/product-detail.html?id=${product.id}" class="btn btn-outline-primary w-100 mb-2">
-                    <i class="fas fa-info-circle me-1"></i> Chi tiết
-                </a>
-                <button class="btn btn-outline-danger add-to-wishlist" data-product-id="${product.id}">
-                    <i class="far fa-heart"></i>
-                </button>
-                <button class="btn btn-primary add-to-cart" data-product-id="${product.id}">
-                    <i class="fas fa-shopping-cart me-1"></i> Thêm vào giỏ
-                </button>
+                <div class="d-flex flex-column gap-2 mt-auto">
+                    <div class="d-flex justify-content-between">
+                        <a href="/user/pages/product-detail.html?id=${product.id}" class="btn btn-outline-primary">
+                            <i class="fas fa-eye"></i> Chi tiết
+                        </a>
+                        <button class="btn btn-outline-danger add-to-wishlist" data-product-id="${product.id}">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-primary w-100 add-to-cart" data-product-id="${product.id}">
+                        <i class="fas fa-shopping-cart me-1"></i> Thêm vào giỏ
+                    </button>
+                </div>
               `;
         
+        // Tạo thẻ hiển thị danh mục
+        const categoryBadge = `<span class="badge bg-${getCategoryColorClass(product.category)}">${product.category}</span>`;
+        
         productsContainer.append(`
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 product-card">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="product-card card h-100">
                     <div class="product-image-container">
-                        <img src="${product.image}" class="card-img-top product-image" alt="${product.name}">
+                        <img src="${product.image}" class="card-img-top" alt="${product.name}">
                     </div>
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">${product.name}</h5>
-                        <div class="mb-2">
-                            ${generateStarRating(product.rating)}
-                            <small class="text-muted">(${product.reviewCount})</small>
+                        <div class="mb-2">${categoryBadge}</div>
+                        <h5 class="card-title" title="${product.name}">${product.name}</h5>
+                        <div class="product-rating mb-2">
+                            ${generateRatingStars(product.rating)}
+                            <span class="rating-count">(${product.reviewCount})</span>
                         </div>
-                        <p class="card-text">
-                            <span class="badge ${product.category === 'Piano' ? 'bg-info' : product.category === 'Guitar' ? 'bg-success' : product.category === 'Trống' ? 'bg-warning text-dark' : 'bg-secondary'}">${product.category}</span>
-                        </p>
-                        <h5 class="card-price text-primary">${formatPrice(product.price)}</h5>
-                        <div class="mt-auto d-flex gap-2 product-actions">
-                            ${actionButtons}
-                        </div>
+                        <p class="price text-primary fw-bold mb-3">${formatPrice(product.price)}</p>
+                        ${actionButtons}
                     </div>
                 </div>
             </div>
@@ -456,7 +461,7 @@ function initializeEventHandlers() {
 }
 
 // Generate star rating HTML
-function generateStarRating(rating) {
+function generateRatingStars(rating) {
     let stars = '';
     for (let i = 1; i <= 5; i++) {
         if (i <= rating) {
@@ -640,4 +645,75 @@ function updateCategoryCounts() {
             $(this).find('.badge').text(count);
         }
     });
+}
+
+// Tạo HTML cho sản phẩm
+function createProductHTML(product) {
+    // Kiểm tra xem người dùng có phải là admin không
+    const isAdmin = localStorage.getItem('isAdminLoggedIn') === 'true' || 
+                   (localStorage.getItem('currentUser') && 
+                    JSON.parse(localStorage.getItem('currentUser')).role === 'admin');
+    
+    // Tạo HTML khác nhau tùy thuộc vào vai trò người dùng
+    const actionButtons = isAdmin 
+        ? `
+            <div class="d-flex justify-content-center mt-auto">
+                <a href="/user/pages/product-detail.html?id=${product.id}" class="btn btn-outline-primary w-100">
+                    <i class="fas fa-eye"></i> Chi tiết
+                </a>
+            </div>
+          `
+        : `
+            <div class="d-flex flex-column gap-2 mt-auto">
+                <div class="d-flex justify-content-between">
+                    <a href="/user/pages/product-detail.html?id=${product.id}" class="btn btn-outline-primary">
+                        <i class="fas fa-eye"></i> Chi tiết
+                    </a>
+                    <button class="btn btn-outline-danger add-to-wishlist" data-product-id="${product.id}">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+                <button class="btn btn-primary w-100 add-to-cart" data-product-id="${product.id}">
+                    <i class="fas fa-shopping-cart me-1"></i> Thêm vào giỏ
+                </button>
+            </div>
+          `;
+    
+    // Tạo thẻ hiển thị danh mục
+    const categoryBadge = `<span class="badge bg-${getCategoryColorClass(product.category)}">${product.category}</span>`;
+    
+    // Tạo HTML cho sản phẩm
+    return `
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="product-card card h-100">
+                <div class="product-image-container">
+                    <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <div class="mb-2">${categoryBadge}</div>
+                    <h5 class="card-title" title="${product.name}">${product.name}</h5>
+                    <div class="product-rating mb-2">
+                        ${generateRatingStars(product.rating)}
+                        <span class="rating-count">(${product.reviewCount})</span>
+                    </div>
+                    <p class="price text-primary fw-bold mb-3">${formatPrice(product.price)}</p>
+                    ${actionButtons}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Get category color class
+function getCategoryColorClass(category) {
+    const categoryMap = {
+        'Piano': 'info',
+        'Guitar': 'success',
+        'Trống': 'warning',
+        'Violin': 'danger',
+        'Nhạc cụ hơi': 'primary',
+        'Phụ kiện': 'secondary'
+    };
+    
+    return categoryMap[category] || 'secondary';
 } 

@@ -304,16 +304,31 @@ class BlogPost {
 // Initialize blog post
 const blogPost = new BlogPost();
 
+// Load header, footer, and initialize auth state
 $(document).ready(function() {
     // Load header
-    $("#header").load("../components/header.html", function() {
-        // After header loads, initialize any header-specific functionality
-        // Highlight current page in navigation
-        $('nav a[href*="blog"]').addClass('active');
+    $("#header").load("/user/components/header.html", function() {
+        console.log('Header loaded');
+        // Call updateAuthUI after header is loaded
+        if (typeof updateAuthUI === 'function') {
+            updateAuthUI();
+        }
+        
+        // Đảm bảo script auth.js được load
+        if (typeof updateAuthUI !== 'function') {
+            $.getScript('/user/assets/js/auth.js', function() {
+                if (typeof updateAuthUI === 'function') {
+                    updateAuthUI();
+                }
+            });
+        }
     });
-
+    
     // Load footer
-    $("#footer").load("../components/footer.html", function() {
-        // After footer loads, initialize any footer-specific functionality
+    $("#footer").load("/user/components/footer.html", function() {
+        console.log('Footer loaded');
     });
+    
+    // Initialize blog post after DOM is loaded
+    new BlogPost();
 }); 

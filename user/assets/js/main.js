@@ -1,7 +1,7 @@
 // Wait for DOM and components to load
 $(document).ready(function() {
     // Load header and footer
-    $("#header").load("components/header.html", function() {
+    $("#header").load("/user/components/header.html", function() {
         console.log('Header loaded');
         if (typeof updateAuthUI === 'function') {
             updateAuthUI();
@@ -12,7 +12,7 @@ $(document).ready(function() {
         updateWishlistCount();
     });
     
-    $("#footer").load("components/footer.html", function() {
+    $("#footer").load("/user/components/footer.html", function() {
         console.log('Footer loaded');
         // Update copyright year after footer is loaded
         const yearElement = document.getElementById('current-year');
@@ -303,7 +303,7 @@ const products = [
         name: 'Piano Yamaha C3X PE',
         category: 'Piano',
         price: 850000000,
-        image: 'assets/images/products/piano-1.jpg',
+        image: '/user/assets/images/products/piano-1.jpg',
         featured: true,
         description: 'Đàn piano cơ cao cấp, âm thanh xuất sắc'
     },
@@ -312,7 +312,7 @@ const products = [
         name: 'Guitar Classic Yamaha C40',
         category: 'Guitar',
         price: 3200000,
-        image: 'assets/images/products/guitar-1.jpg',
+        image: '/user/assets/images/products/guitar-1.jpg',
         featured: true,
         description: 'Guitar classic chất lượng cho người mới học'
     },
@@ -321,7 +321,7 @@ const products = [
         name: 'Trống Pearl Decade Maple',
         category: 'Trống',
         price: 25000000,
-        image: 'assets/images/products/drums-1.jpg',
+        image: '/user/assets/images/products/drums-1.jpg',
         featured: true,
         description: 'Bộ trống chuyên nghiệp, âm thanh mạnh mẽ'
     },
@@ -330,7 +330,7 @@ const products = [
         name: 'Kèn Trumpet Yamaha YTR-2330',
         category: 'Nhạc cụ hơi',
         price: 15000000,
-        image: 'assets/images/products/wind-1.jpg',
+        image: '/user/assets/images/products/wind-1.jpg',
         featured: true,
         description: 'Kèn trumpet chất lượng Nhật Bản'
     }
@@ -368,18 +368,18 @@ function loadFeaturedProducts() {
         const actionButtons = isAdmin 
             ? `
                 <div class="mt-auto">
-                    <a href="pages/product-detail.html?id=${product.id}" class="btn btn-outline-primary w-100">
+                    <a href="/user/pages/product-detail.html?id=${product.id}" class="btn btn-outline-primary w-100">
                         <i class="fas fa-eye"></i> Chi tiết
                     </a>
                 </div>
               `
             : `
-                <div class="mt-auto">
-                    <div class="d-flex justify-content-between mb-2">
-                        <a href="pages/product-detail.html?id=${product.id}" class="btn btn-outline-primary btn-sm">
+                <div class="d-flex flex-column gap-2 mt-auto">
+                    <div class="d-flex justify-content-between">
+                        <a href="/user/pages/product-detail.html?id=${product.id}" class="btn btn-outline-primary">
                             <i class="fas fa-eye"></i> Chi tiết
                         </a>
-                        <button class="btn btn-outline-danger btn-sm add-to-wishlist" data-product-id="${product.id}">
+                        <button class="btn btn-outline-danger add-to-wishlist" data-product-id="${product.id}">
                             <i class="fas fa-heart"></i>
                         </button>
                     </div>
