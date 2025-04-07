@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài khoản của tôi - Music Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .profile-section {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .nav-pills .nav-link.active {
+            background-color: #0d6efd;
+        }
+        .tab-content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    <div id="header"></div>
+
+    <div class="container" style="margin-top: 100px; margin-bottom: 50px;">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="profile-section text-center">
+                    <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-picture">
+                    <h5 class="mb-3" id="userEmail"></h5>
+                    <div class="nav flex-column nav-pills">
+                        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#profile">
+                            <i class="fas fa-user me-2"></i>Thông tin cá nhân
+                        </button>
+                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#security">
+                            <i class="fas fa-lock me-2"></i>Bảo mật
+                        </button>
+                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#preferences">
+                            <i class="fas fa-cog me-2"></i>Tùy chọn
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <div class="tab-content profile-section">
+                    <div class="tab-pane fade show active" id="profile">
+                        <h4>Thông tin cá nhân</h4>
+                        <hr>
+                        <form id="profileForm">
+                            <div class="mb-3">
+                                <label class="form-label">Họ và tên</label>
+                                <input type="text" class="form-control" id="fullName">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Số điện thoại</label>
+                                <input type="tel" class="form-control" id="phone">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Địa chỉ</label>
+                                <textarea class="form-control" id="address" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Lưu thay đổi
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="security">
+                        <h4>Bảo mật</h4>
+                        <hr>
+                        <form id="passwordForm">
+                            <div class="mb-3">
+                                <label class="form-label">Mật khẩu hiện tại</label>
+                                <input type="password" class="form-control" id="currentPassword">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Mật khẩu mới</label>
+                                <input type="password" class="form-control" id="newPassword">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Xác nhận mật khẩu mới</label>
+                                <input type="password" class="form-control" id="confirmPassword">
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-key me-2"></i>Đổi mật khẩu
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="preferences">
+                        <h4>Tùy chọn</h4>
+                        <hr>
+                        <form id="preferencesForm">
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="emailNotifications">
+                                    <label class="form-check-label">Nhận thông báo qua email</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="orderUpdates">
+                                    <label class="form-check-label">Cập nhật trạng thái đơn hàng</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="promotions">
+                                    <label class="form-check-label">Nhận thông tin khuyến mãi</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Lưu tùy chọn
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div id="footer"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Load header and footer
+        $(document).ready(function() {
+            $("#header").load("/components/header.html");
+            $("#footer").load("/components/footer.html");
+
+            // Check if user is logged in
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                window.location.href = '/pages/login.html';
+                return;
+            }
+
+            // Display user email
+            document.getElementById('userEmail').textContent = currentUser.email;
+
+            // Handle profile form submission
+            document.getElementById('profileForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Save profile changes
+                alert('Thông tin đã được cập nhật!');
+            });
+
+            // Handle password form submission
+            document.getElementById('passwordForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Change password logic
+                alert('Mật khẩu đã được thay đổi!');
+            });
+
+            // Handle preferences form submission
+            document.getElementById('preferencesForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Save preferences
+                alert('Tùy chọn đã được lưu!');
+            });
+        });
+    </script>
+</body>
+</html> 

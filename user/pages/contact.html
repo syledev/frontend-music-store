@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - Music Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <!-- Include Header -->
+    <div id="header"></div>
+
+    <!-- Contact Section -->
+    <div class="container py-5">
+        <div class="contact-title text-center mb-5">
+            <h1>Liên hệ với chúng tôi</h1>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Thông tin liên hệ</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                17A Cộng Hòa, P.4, Q.Tân Bình, TP.HCM
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-phone text-primary me-2"></i>
+                                (123) 456-7890
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-envelope text-primary me-2"></i>
+                                congsy@musicstore.com
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-clock text-primary me-2"></i>
+                                Thứ 2 - Chủ nhật: 8:00 - 20:00
+                            </li>
+                        </ul>
+                        
+                        <h5 class="card-title mt-4">Theo dõi chúng tôi</h5>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/congsy.m" class="text-primary me-3"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.facebook.com/congsy.m" class="text-primary me-3"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/congsy.m" class="text-primary"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Gửi tin nhắn cho chúng tôi</h5>
+                        <form id="contact-form">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Họ và tên</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Tiêu đề</label>
+                                <input type="text" class="form-control" id="subject" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Nội dung</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bản đồ</h5>
+                        <div class="map-container" style="height: 400px;">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4582.532972178147!2d106.65476271125337!3d10.80079228930514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529373ef310fd%3A0xbdffdbfcd0756b45!2zMTdhIMSQLiBD4buZbmcgSMOyYSwgUGjGsOG7nW5nIDQsIFTDom4gQsOsbmgsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e1!3m2!1svi!2s!4v1743700978413!5m2!1svi!2s" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div id="footer"></div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/contact.js"></script>
+</body>
+</html> 

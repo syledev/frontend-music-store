@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Music Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto 50px; /* Thêm margin bottom 50px */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background: white;
+        }
+        .google-btn {
+            display: block;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 8px 16px;
+            color: #333;
+            font-weight: 500;
+            width: 100%;
+            margin-bottom: 20px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .google-btn:hover {
+            background: #f8f9fa;
+            border-color: #ccc;
+        }
+        .google-btn img {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+            color: #666;
+        }
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e0e0e0;
+            margin: 0 10px;
+        }
+        .divider span {
+            font-size: 14px;
+            color: #666;
+        }
+        .form-control {
+            padding: 0.6rem 0.75rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+        }
+        .form-control:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+        .btn-primary {
+            padding: 12px;
+            font-weight: 500;
+            background-color: #4285f4;
+            border-color: #4285f4;
+        }
+        .btn-primary:hover {
+            background-color: #3367d6;
+            border-color: #3367d6;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div id="header"></div>
+
+    <div class="container">
+        <div class="login-container">
+            <h2 class="text-center mb-4">Đăng nhập</h2>
+            
+            <div class="alert alert-danger" id="loginError" style="display: none;"></div>
+            
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+                
+                <div class="mb-3 d-flex justify-content-between align-items-center">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Ghi nhớ đăng nhập</label>
+                    </div>
+                    <a href="forgot-password.html" class="text-decoration-none">Quên mật khẩu?</a>
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-100">
+                    <i class="fas fa-sign-in-alt me-2"></i>Đăng nhập
+                </button>
+            </form>
+            
+            <div class="divider">
+                <span>hoặc</span>
+            </div>
+            
+            <a href="#" class="google-btn" onclick="handleGoogleLogin()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo">
+                <span>Đăng nhập với Google</span>
+            </a>
+            
+            <div class="text-center">
+                <p class="mb-0">Chưa có tài khoản? 
+                    <a href="register.html" class="text-decoration-none">Đăng ký ngay</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/auth.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#header").load("../components/header.html", function() {
+                // After header is loaded, initialize auth state
+                if (typeof updateAuthUI === 'function') {
+                    updateAuthUI();
+                }
+            });
+            $("#footer").load("../components/footer.html");
+
+            // Check for remembered email
+            const rememberedEmail = localStorage.getItem("rememberedEmail");
+            if (rememberedEmail) {
+                $("#email").val(rememberedEmail);
+                $("#rememberMe").prop("checked", true);
+            }
+
+            // Handle form submission
+            $("#loginForm").on("submit", function(e) {
+                e.preventDefault();
+                const email = $("#email").val();
+                const password = $("#password").val();
+                const rememberMe = $("#rememberMe").is(":checked");
+
+                // Call login function from auth.js
+                handleLogin(email, password, rememberMe);
+            });
+        });
+
+        function handleLogin(email, password, rememberMe) {
+            // Mock user data (in real app, this would be API call)
+            const users = [
+                { email: 'admin@gmail.com', password: 'abc123', role: 'admin', displayName: 'Admin' },
+                { email: 'user@gmail.com', password: 'abc123', role: 'user', displayName: 'User' },
+                { email: 'user1@gmail.com', password: 'abc123', role: 'user', displayName: 'User1' }
+            ];
+
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                // Store user info
+                localStorage.setItem("currentUser", JSON.stringify({
+                    email: user.email,
+                    role: user.role,
+                    displayName: user.displayName
+                }));
+
+                // Handle remember me
+                if (rememberMe) {
+                    localStorage.setItem("rememberedEmail", email);
+                } else {
+                    localStorage.removeItem("rememberedEmail");
+                }
+
+                // Show success message
+                $("#loginError").removeClass("alert-danger").addClass("alert-success")
+                    .html("Đăng nhập thành công! Đang chuyển hướng...").show();
+
+                // Redirect based on role
+                setTimeout(() => {
+                    if (user.role === 'admin') {
+                        window.location.href = "../admin/dashboard.html";
+                    } else {
+                        window.location.href = "../index.html";
+                    }
+                }, 1500);
+            } else {
+                // Show error message
+                $("#loginError").removeClass("alert-success").addClass("alert-danger")
+                    .html("Email hoặc mật khẩu không đúng!").show();
+            }
+        }
+
+        function handleGoogleLogin() {
+            alert("Tính năng đăng nhập bằng Google sẽ được triển khai sau!");
+        }
+    </script>
+</body>
+</html> 

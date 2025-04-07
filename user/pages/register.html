@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - Music Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background: white;
+        }
+        .google-btn {
+            display: block;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 8px 16px;
+            color: #333;
+            font-weight: 500;
+            width: 100%;
+            margin-bottom: 20px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .google-btn:hover {
+            background: #f8f9fa;
+            border-color: #ccc;
+        }
+        .google-btn img {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+            color: #666;
+        }
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e0e0e0;
+            margin: 0 10px;
+        }
+        .divider span {
+            font-size: 14px;
+            color: #666;
+        }
+        .form-control {
+            padding: 0.6rem 0.75rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+        }
+        .form-control:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+        .btn-primary {
+            padding: 12px;
+            font-weight: 500;
+            background-color: #4285f4;
+            border-color: #4285f4;
+        }
+        .btn-primary:hover {
+            background-color: #3367d6;
+            border-color: #3367d6;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Include Header -->
+    <div id="header"></div>
+
+    <div class="container">
+        <div class="login-container">
+            <h2 class="text-center mb-4">Đăng ký</h2>
+            
+            <!-- Register Form -->
+            <form id="registerForm">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                    <input type="password" class="form-control" id="confirmPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">
+                    <i class="fas fa-user-plus me-2"></i>Đăng ký
+                </button>
+            </form>
+
+            <div class="divider">
+                <span>hoặc</span>
+            </div>
+
+            <!-- Google Sign Up Button -->
+            <a href="#" class="google-btn" onclick="handleGoogleSignUp()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo">
+                <span>Đăng ký với Google</span>
+            </a>
+
+            <div class="text-center mt-4">
+                <p class="mb-0">Đã có tài khoản? <a href="login.html">Đăng nhập</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Load header and footer
+        $(document).ready(function() {
+            $("#header").load("../components/header.html");
+            $("#footer").load("../components/footer.html");
+        });
+
+        // Handle Google Sign Up
+        function handleGoogleSignUp() {
+            alert("Tính năng đăng ký bằng Google sẽ được triển khai sau!");
+        }
+
+        // Handle form submission
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Mật khẩu xác nhận không khớp!');
+                return;
+            }
+
+            // Mock user registration
+            const newUser = {
+                email: email,
+                role: 'user'
+            };
+
+            // Save user to localStorage
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+            
+            // Redirect to home page
+            window.location.href = '/index.html';
+        });
+    </script>
+</body>
+</html> 

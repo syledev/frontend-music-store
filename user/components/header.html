@@ -1,0 +1,215 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold" href="/index.html">Music Store</a>
+        
+        <!-- Toggler for mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Navbar content -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <!-- Main menu -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index.html">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/products.html">Sản phẩm</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/blog.html">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/contact.html">Liên hệ</a>
+                </li>
+                
+            </ul>
+      
+            
+            <!-- User Actions -->
+            <div class="d-flex align-items-center">
+                <!-- Shopping cart - visible for guests and regular users, not for admins -->
+                <div class="non-admin-cart">
+                    <a href="/pages/cart.html" class="btn btn-outline-primary position-relative me-2">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-count">
+                            0
+                        </span>
+                    </a>
+                </div>
+                
+                <!-- Wishlist - visible for guests and regular users, not for admins -->
+                <div class="non-admin-wishlist">
+                    <a href="/pages/wishlist.html" class="btn btn-outline-primary position-relative me-2">
+                        <i class="fas fa-heart"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger wishlist-count">
+                            0
+                        </span>
+                    </a>
+                </div>
+                
+                <!-- User dropdown when logged in -->
+                <div class="dropdown user-profile" style="display: none;">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                        <i class="fas fa-user me-1"></i>
+                        <span class="user-name">User</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="/pages/my-account.html"><i class="fas fa-user-circle me-2"></i>Tài khoản</a></li>
+                        <li class="user-only-menu" style="display: none;"><a class="dropdown-item" href="/pages/orders.html"><i class="fas fa-shopping-bag me-2"></i>Đơn hàng</a></li>
+                        <li class="user-only-menu" style="display: none;"><a class="dropdown-item" href="/pages/wishlist.html"><i class="fas fa-heart me-2"></i>Yêu thích</a></li>
+                        <li class="admin-only-menu" style="display: none;"><a class="dropdown-item" href="/admin/dashboard.html"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item logout-btn" href="#"><i class="fas fa-sign-out-alt me-2"></i>Đăng xuất</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Login/Register buttons when not logged in -->
+                <div class="guest-only">
+                    <a href="/pages/login.html" class="btn btn-outline-primary me-2">
+                        <i class="fas fa-sign-in-alt me-1"></i>Đăng nhập
+                    </a>
+                    <a href="/pages/register.html" class="btn btn-primary">
+                        <i class="fas fa-user-plus me-1"></i>Đăng ký
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+// Function to check if user is logged in
+function isLoggedIn() {
+    return localStorage.getItem('isLoggedIn') === 'true' || 
+           localStorage.getItem('currentUser') !== null ||
+           localStorage.getItem('isAdminLoggedIn') === 'true';
+}
+
+// Function to check if admin is logged in
+function isAdminLoggedIn() {
+    return localStorage.getItem('isAdminLoggedIn') === 'true' || 
+           (localStorage.getItem('currentUser') && 
+            JSON.parse(localStorage.getItem('currentUser')).role === 'admin');
+}
+
+// Function to get current user
+function getCurrentUser() {
+    const userString = localStorage.getItem('currentUser');
+    return userString ? JSON.parse(userString) : null;
+}
+
+// Update UI based on authentication status
+function updateAuthUI() {
+    const currentUser = getCurrentUser();
+    const isAdmin = isAdminLoggedIn();
+    
+    // Select UI elements
+    const guestElements = document.querySelectorAll('.guest-only');
+    const userElements = document.querySelectorAll('.user-only-menu');
+    const adminElements = document.querySelectorAll('.admin-only');
+    const adminMenuItems = document.querySelectorAll('.admin-only-menu');
+    const userProfile = document.querySelector('.user-profile');
+    const userNameSpan = document.querySelector('.user-name');
+    const nonAdminCart = document.querySelectorAll('.non-admin-cart');
+    const nonAdminWishlist = document.querySelectorAll('.non-admin-wishlist');
+    
+    if (currentUser || isAdmin) {
+        // User is logged in
+        guestElements.forEach(el => el.style.display = 'none');
+        
+        if (isAdmin) {
+            // Admin is logged in
+            nonAdminCart.forEach(el => el.style.display = 'none');
+            nonAdminWishlist.forEach(el => el.style.display = 'none');
+            userElements.forEach(el => el.style.display = 'none');
+            adminElements.forEach(el => el.style.display = 'block');
+            adminMenuItems.forEach(el => el.style.display = 'block');
+            if (userProfile) userProfile.style.display = 'block';
+            if (userNameSpan) userNameSpan.textContent = 'Admin';
+        } else {
+            // Regular user is logged in
+            nonAdminCart.forEach(el => el.style.display = 'block');
+            nonAdminWishlist.forEach(el => el.style.display = 'block');
+            userElements.forEach(el => el.style.display = 'block');
+            adminElements.forEach(el => el.style.display = 'none');
+            adminMenuItems.forEach(el => el.style.display = 'none');
+            if (userProfile) userProfile.style.display = 'block';
+            if (userNameSpan) userNameSpan.textContent = currentUser.displayName || currentUser.name || 'User';
+            
+            // Update cart and wishlist counts
+            updateCartCount();
+            updateWishlistCount();
+        }
+    } else {
+        // No user is logged in
+        guestElements.forEach(el => el.style.display = 'block');
+        nonAdminCart.forEach(el => el.style.display = 'block');
+        nonAdminWishlist.forEach(el => el.style.display = 'block'); 
+        userElements.forEach(el => el.style.display = 'none');
+        adminElements.forEach(el => el.style.display = 'none');
+        adminMenuItems.forEach(el => el.style.display = 'none');
+        if (userProfile) userProfile.style.display = 'none';
+        
+        // Update cart and wishlist counts
+        updateCartCount();
+        updateWishlistCount();
+    }
+    
+    // Set up logout button
+    setupLogoutButton();
+}
+
+// Update cart count
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const cartCountElements = document.querySelectorAll('.cart-count');
+    cartCountElements.forEach(el => {
+        el.textContent = cart.length;
+    });
+}
+
+// Update wishlist count
+function updateWishlistCount() {
+    const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+    const wishlistCountElements = document.querySelectorAll('.wishlist-count');
+    wishlistCountElements.forEach(el => {
+        el.textContent = wishlist.length;
+    });
+}
+
+// Setup logout button
+function setupLogoutButton() {
+    const logoutBtn = document.querySelector('.logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            handleLogout();
+        });
+    }
+}
+
+// Handle logout
+function handleLogout() {
+    const isAdmin = isAdminLoggedIn();
+    
+    if (isAdmin) {
+        localStorage.removeItem('isAdminLoggedIn');
+        localStorage.removeItem('currentUser');
+    } else {
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('isLoggedIn');
+    }
+    
+    // Redirect to home page
+    window.location.href = '/index.html';
+}
+
+// Call updateAuthUI when the script loads
+document.addEventListener('DOMContentLoaded', function() {
+    updateAuthUI();
+});
+</script>

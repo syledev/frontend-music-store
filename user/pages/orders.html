@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đơn hàng của tôi - Music Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .order-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .order-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .order-body {
+            padding: 20px;
+        }
+        .order-footer {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-top: 1px solid #dee2e6;
+        }
+        .product-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+        }
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.875rem;
+        }
+        .status-pending {
+            background-color: #ffeeba;
+            color: #856404;
+        }
+        .status-processing {
+            background-color: #b8daff;
+            color: #004085;
+        }
+        .status-shipped {
+            background-color: #c3e6cb;
+            color: #155724;
+        }
+        .status-delivered {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .status-cancelled {
+            background-color: #f5c6cb;
+            color: #721c24;
+        }
+        .order-details {
+            display: none;
+            padding: 20px;
+            background: #fff;
+            border-top: 1px solid #dee2e6;
+        }
+        .order-details.show {
+            display: block;
+        }
+        .detail-section {
+            margin-bottom: 20px;
+        }
+        .detail-section h6 {
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #0d6efd;
+        }
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 15px;
+            width: 2px;
+            height: calc(100% - 15px);
+            background: #dee2e6;
+        }
+        .timeline-item:last-child:after {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    <div id="header"></div>
+
+    <!-- Include Dialog -->
+    <div id="dialog"></div>
+
+    <div class="container" style="margin-top: 100px; margin-bottom: 50px;">
+        <h2 class="mb-4">Đơn hàng của tôi</h2>
+        
+        <!-- Order Filters -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm đơn hàng...">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6 text-end">
+                <select class="form-select d-inline-block w-auto">
+                    <option value="all">Tất cả đơn hàng</option>
+                    <option value="pending">Chờ xác nhận</option>
+                    <option value="processing">Đang xử lý</option>
+                    <option value="shipped">Đang giao</option>
+                    <option value="delivered">Đã giao</option>
+                    <option value="cancelled">Đã hủy</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Orders List -->
+        <div id="ordersList">
+            <!-- Sample Order -->
+            <div class="order-card">
+                <div class="order-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-0">Đơn hàng #12345</h6>
+                        <small class="text-muted">Đặt ngày: 15/03/2024</small>
+                    </div>
+                    <span class="status-badge status-processing">Đang xử lý</span>
+                </div>
+                <div class="order-body">
+                    <div class="row align-items-center mb-3">
+                        <div class="col-md-2">
+                            <img src="https://via.placeholder.com/80" alt="Product" class="product-img">
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="mb-1">Guitar Acoustic Yamaha F310</h6>
+                            <p class="mb-0 text-muted">Số lượng: 1</p>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <h6 class="mb-0">3,500,000₫</h6>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <img src="https://via.placeholder.com/80" alt="Product" class="product-img">
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="mb-1">Dây đàn Guitar D'Addario</h6>
+                            <p class="mb-0 text-muted">Số lượng: 2</p>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <h6 class="mb-0">250,000₫</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-footer d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>Tổng tiền:</strong>
+                        <span class="h5 mb-0 ms-2">4,000,000₫</span>
+                    </div>
+                    <div>
+                        <button class="btn btn-outline-primary btn-sm me-2" onclick="toggleOrderDetails(this)">
+                            <i class="fas fa-eye me-1"></i>Chi tiết
+                        </button>
+                        <button class="btn btn-outline-danger btn-sm">
+                            <i class="fas fa-times me-1"></i>Hủy đơn
+                        </button>
+                    </div>
+                </div>
+                <!-- Order Details Section -->
+                <div class="order-details">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="detail-section">
+                                <h6>Thông tin giao hàng</h6>
+                                <p class="mb-1"><strong>Người nhận:</strong> Nguyễn Văn A</p>
+                                <p class="mb-1"><strong>Số điện thoại:</strong> 0123456789</p>
+                                <p class="mb-1"><strong>Địa chỉ:</strong> 123 Đường ABC, Quận XYZ, TP.HCM</p>
+                            </div>
+                            <div class="detail-section">
+                                <h6>Phương thức thanh toán</h6>
+                                <p class="mb-1"><i class="fas fa-money-bill-wave me-2"></i>Thanh toán khi nhận hàng (COD)</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="detail-section">
+                                <h6>Trạng thái đơn hàng</h6>
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <p class="mb-0"><strong>15/03/2024 08:30</strong></p>
+                                        <p class="mb-0">Đơn hàng đã được đặt</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <p class="mb-0"><strong>15/03/2024 09:15</strong></p>
+                                        <p class="mb-0">Đã xác nhận đơn hàng</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <p class="mb-0"><strong>15/03/2024 14:20</strong></p>
+                                        <p class="mb-0">Đang chuẩn bị hàng</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Another Sample Order -->
+            <div class="order-card">
+                <div class="order-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-0">Đơn hàng #12344</h6>
+                        <small class="text-muted">Đặt ngày: 10/03/2024</small>
+                    </div>
+                    <span class="status-badge status-delivered">Đã giao</span>
+                </div>
+                <div class="order-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <img src="https://via.placeholder.com/80" alt="Product" class="product-img">
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="mb-1">Piano Điện Yamaha P-45</h6>
+                            <p class="mb-0 text-muted">Số lượng: 1</p>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <h6 class="mb-0">12,990,000₫</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-footer d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>Tổng tiền:</strong>
+                        <span class="h5 mb-0 ms-2">12,990,000₫</span>
+                    </div>
+                    <div>
+                        <button class="btn btn-outline-primary btn-sm me-2" onclick="toggleOrderDetails(this)">
+                            <i class="fas fa-eye me-1"></i>Chi tiết
+                        </button>
+                        <button class="btn btn-outline-success btn-sm me-2" data-order-id="12344">
+                            <i class="fas fa-redo me-1"></i>Đặt lại
+                        </button>
+                        <button class="btn btn-outline-warning btn-sm review-order-btn" data-order-id="12344">
+                            <i class="fas fa-star me-1"></i>Đánh giá
+                        </button>
+                    </div>
+                </div>
+                <!-- Order Details Section -->
+                <div class="order-details">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="detail-section">
+                                <h6>Thông tin giao hàng</h6>
+                                <p class="mb-1"><strong>Người nhận:</strong> Nguyễn Văn A</p>
+                                <p class="mb-1"><strong>Số điện thoại:</strong> 0123456789</p>
+                                <p class="mb-1"><strong>Địa chỉ:</strong> 123 Đường ABC, Quận XYZ, TP.HCM</p>
+                            </div>
+                            <div class="detail-section">
+                                <h6>Phương thức thanh toán</h6>
+                                <p class="mb-1"><i class="fas fa-money-bill-wave me-2"></i>Thanh toán khi nhận hàng (COD)</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="detail-section">
+                                <h6>Trạng thái đơn hàng</h6>
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <p class="mb-0"><strong>10/03/2024 10:15</strong></p>
+                                        <p class="mb-0">Đơn hàng đã được đặt</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <p class="mb-0"><strong>10/03/2024 11:30</strong></p>
+                                        <p class="mb-0">Đã xác nhận đơn hàng</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <p class="mb-0"><strong>10/03/2024 14:45</strong></p>
+                                        <p class="mb-0">Đang giao hàng</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <p class="mb-0"><strong>12/03/2024 09:20</strong></p>
+                                        <p class="mb-0">Đã giao hàng thành công</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Include Footer -->
+    <div id="footer"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/orders.js"></script>
+
+    <script>
+        // Load header, footer and dialog
+        $(document).ready(function() {
+            $("#header").load("/components/header.html", function() {
+                if (typeof updateAuthUI === 'function') {
+                    updateAuthUI();
+                }
+            });
+            $("#footer").load("/components/footer.html");
+            $("#dialog").load("/components/dialog/dialog.html");
+
+            // Check if user is logged in
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                window.location.href = '/pages/login.html';
+                return;
+            }
+
+            // Handle review button click
+            $(document).on('click', '.review-order-btn', function() {
+                const orderId = $(this).data('order-id');
+                // Redirect to the review page
+                window.location.href = `/pages/review.html?orderId=${orderId}`;
+            });
+
+            // Handle order cancellation
+            $('.btn-outline-danger').click(function() {
+                Dialog.confirm(
+                    'Bạn có chắc chắn muốn hủy đơn hàng này?',
+                    function() {
+                        Dialog.success('Đơn hàng đã được hủy thành công!');
+                    }
+                );
+            });
+
+            // Handle reorder
+            $('.btn-outline-success').click(function() {
+                const orderId = $(this).data('order-id');
+                if (typeof reorderItems === 'function') {
+                    if (reorderItems(orderId)) {
+                        Dialog.success('Sản phẩm đã được thêm vào giỏ hàng!');
+                    }
+                } else {
+                    console.error('reorderItems function not found!');
+                    alert('Lỗi khi đặt lại đơn hàng. Vui lòng thử lại sau.');
+                }
+            });
+        });
+
+        // Toggle order details
+        function toggleOrderDetails(button) {
+            const orderCard = button.closest('.order-card');
+            const detailsSection = orderCard.querySelector('.order-details');
+            detailsSection.classList.toggle('show');
+            
+            // Change button icon and text
+            const icon = button.querySelector('i');
+            if (detailsSection.classList.contains('show')) {
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+                button.innerHTML = '<i class="fas fa-eye-slash me-1"></i>Ẩn chi tiết';
+            } else {
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+                button.innerHTML = '<i class="fas fa-eye me-1"></i>Chi tiết';
+            }
+        }
+    </script>
+</body>
+</html> 

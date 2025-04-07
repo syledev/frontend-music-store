@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng - Music Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .cart-item-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+        .shipping-info {
+            display: none;
+        }
+        .payment-qr {
+            display: none;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .cart-item-quantity {
+            width: 60px;
+            text-align: center;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-controls button {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 5px 8px;
+            color: #333;
+        }
+        
+        .quantity-controls input {
+            margin: 0 5px;
+        }
+        
+        #shipping-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .payment-methods {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        
+        .payment-method-item {
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        .payment-method-item:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .payment-method-item.active {
+            background-color: #e6f7ff;
+            border: 1px solid #91d5ff;
+        }
+        
+        #payment-qr {
+            text-align: center;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .qr-code {
+            background-color: #fff;
+            padding: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Căn chỉnh số lượng trong giỏ hàng */
+        .input-group {
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .input-group-sm > .form-control,
+        .input-group-sm > .btn {
+            height: 31px;
+            line-height: 1;
+            padding: 0.25rem 0.5rem;
+        }
+
+        /* Validation styles */
+        .invalid-feedback {
+            display: none;
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: #dc3545;
+        }
+        
+        .was-validated .form-control:invalid ~ .invalid-feedback,
+        .is-invalid ~ .invalid-feedback {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <!-- Cart Section -->
+    <div class="container py-5">
+        <h1 class="mb-4">Giỏ hàng của bạn</h1>
+        
+        <div class="row">
+            <div class="col-lg-8" id="cart-container">
+                <!-- Cart items will be loaded here -->
+                <div class="text-center py-5" id="empty-cart-message" style="display: none;">
+                    <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                    <h3>Giỏ hàng của bạn đang trống</h3>
+                    <p class="text-muted">Hãy thêm sản phẩm vào giỏ hàng để tiếp tục mua sắm</p>
+                    <a href="products.html" class="btn btn-primary mt-3">Tiếp tục mua sắm</a>
+                </div>
+                
+                <div id="cart-items-container">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="selectAll">
+                            <label class="form-check-label" for="selectAll">
+                                Chọn tất cả
+                            </label>
+                        </div>
+                        <button id="deleteSelected" class="btn btn-outline-danger btn-sm">
+                            <i class="fas fa-trash-alt me-1"></i> Xóa đã chọn
+                        </button>
+                    </div>
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th width="5%"></th>
+                                <th width="15%">Ảnh</th>
+                                <th width="35%">Sản phẩm</th>
+                                <th width="15%">Đơn giá</th>
+                                <th width="20%">Số lượng</th>
+                                <th width="15%">Thành tiền</th>
+                                <th width="5%"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items">
+                            <!-- Cart items will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <!-- Cart Summary -->
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Tổng giỏ hàng</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Tạm tính:</span>
+                            <span id="subtotal" class="tam-tinh">0 đ</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Phí vận chuyển:</span>
+                            <span id="shipping" class="phi-van-chuyen">30.000 đ</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-3 fw-bold">
+                            <span>Tổng cộng:</span>
+                            <span id="total" class="tong-cong">0 đ</span>
+                        </div>
+                        <button id="checkout-btn" class="btn btn-primary w-100 mb-2 thanh-toan-btn">
+                            Thanh toán
+                        </button>
+                        <a href="products.html" class="btn btn-outline-secondary w-100">
+                            Tiếp tục mua sắm
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Shipping Information -->
+        <div class="shipping-info mt-4" id="shipping-info">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Thông tin giao hàng</h5>
+                </div>
+                <div class="card-body">
+                    <form id="shipping-form" class="needs-validation" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="fullName" class="form-label">Họ và tên <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="fullName" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập họ và tên
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Số điện thoại <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}" maxlength="10" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập số điện thoại đúng 10 chữ số
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập email đúng định dạng
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="province" class="form-label">Tỉnh/Thành phố <span class="text-danger">*</span></label>
+                                <select class="form-select" id="province" required>
+                                    <option value="">Chọn Tỉnh/Thành phố</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn tỉnh/thành phố
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="district" class="form-label">Quận/Huyện <span class="text-danger">*</span></label>
+                                <select class="form-select" id="district" required>
+                                    <option value="">Chọn Quận/Huyện</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn quận/huyện
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="ward" class="form-label">Phường/Xã <span class="text-danger">*</span></label>
+                                <select class="form-select" id="ward" required>
+                                    <option value="">Chọn Phường/Xã</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn phường/xã
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="address" class="form-label">Địa chỉ cụ thể <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="address" rows="2" required></textarea>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập địa chỉ cụ thể
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="note" class="form-label">Ghi chú cho đơn hàng</label>
+                                <textarea class="form-control" id="note" rows="2"></textarea>
+                            </div>
+                        </div>
+                        
+                        <hr class="my-4">
+                        
+                        <h5 class="mb-3">Phương thức thanh toán</h5>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="cod" value="cod" checked>
+                            <label class="form-check-label" for="cod">
+                                <i class="fas fa-money-bill-wave me-2"></i> Thanh toán khi nhận hàng (COD)
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="banking" value="banking">
+                            <label class="form-check-label" for="banking">
+                                <i class="fas fa-university me-2"></i> Chuyển khoản ngân hàng
+                            </label>
+                        </div>
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="momo" value="momo">
+                            <label class="form-check-label" for="momo">
+                                <i class="fas fa-wallet me-2"></i> Ví điện tử MoMo
+                            </label>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Xác nhận đặt hàng</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Payment QR Code -->
+        <div class="payment-qr mt-4 text-center" id="payment-qr">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Thanh toán đơn hàng</h5>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <p class="mb-1">Mã đơn hàng: <strong id="order-code">#12345</strong></p>
+                        <p class="mb-1">Số tiền: <strong id="order-amount">0đ</strong></p>
+                        <p class="mb-0">Vui lòng quét mã QR để thanh toán</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <img src="../assets/images/qr-payment.png" alt="QR Payment" class="img-fluid border rounded">
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success" id="confirm-payment-btn">
+                            <i class="fas fa-check-circle me-2"></i> Tôi đã thanh toán
+                        </button>
+                        <button class="btn btn-outline-secondary" id="cancel-payment-btn">
+                            Hủy
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Thông báo</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <!-- Thông báo sẽ được hiển thị ở đây -->
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Auth JS -->
+    <script src="../assets/js/auth.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/cart.js"></script>
+</body>
+</html> 

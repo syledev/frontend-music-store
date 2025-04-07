@@ -1,0 +1,116 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build files
+dist/
+build/
+out/
+
+# Cache files
+.cache/
+.temp/
+.tmp/
+
+# Test coverage
+coverage/
+
+# Temporary files
+*.swp
+*.swo
+*~
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Package files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+
+# API keys and secrets
+config.js
+secrets.json
+credentials.json
+
+# Large media files
+*.mp4
+*.mov
+*.avi
+*.wmv
+*.flv
+*.mkv
+
+# Font files
+*.ttf
+*.otf
+*.woff
+*.woff2
+
+# Image files
+*.psd
+*.ai
+*.eps
+*.raw
+*.cr2
+*.nef
+*.dng
+
+# Document files
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+
+# Other
+*.bak
+*.tmp
+*.temp
+*.swp
+*.swo
+*~ 

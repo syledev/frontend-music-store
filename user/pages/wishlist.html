@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách yêu thích - Music Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <div class="container py-5 mt-5">
+        <!-- Breadcrumb -->
+        
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Danh sách yêu thích</h1>
+            <button id="xoa-tat-ca" class="btn btn-outline-danger">
+                <i class="fas fa-trash me-2"></i>Xóa tất cả
+            </button>
+        </div>
+
+        <!-- Wishlist Items -->
+        <div id="wishlist-items">
+            <!-- Items will be loaded here -->
+        </div>
+
+        <!-- Empty Wishlist Message -->
+        <div id="empty-wishlist" class="text-center py-5" style="display: none;">
+            <i class="fas fa-heart text-muted mb-3" style="font-size: 4rem;"></i>
+            <h3>Danh sách yêu thích trống</h3>
+            <p class="text-muted">Hãy thêm sản phẩm vào danh sách yêu thích của bạn</p>
+            <a href="products.html" class="btn btn-primary mt-3">
+                <i class="fas fa-shopping-bag me-2"></i>Tiếp tục mua sắm
+            </a>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Auth JS -->
+    <script src="../assets/js/auth.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/wishlist.js"></script>
+</body>
+</html> 

@@ -1,0 +1,145 @@
+/* Header fixed styles */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Title styles */
+.contact-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-title h1 {
+    font-size: 2rem;
+    color: #333;
+    margin: 0;
+}
+
+/* Main content padding for fixed header */
+.container.py-5 {
+    padding-top: 100px !important;
+}
+
+/* Card styles */
+.card {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-title {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* Contact information styles */
+.list-unstyled li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.list-unstyled i {
+    width: 24px;
+    margin-right: 10px;
+}
+
+/* Social links styles */
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: #007bff;
+    color: #fff !important;
+    transform: translateY(-3px);
+}
+
+/* Form styles */
+.form-control {
+    border: 1px solid #ddd;
+    padding: 0.8rem;
+    border-radius: 5px;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+.form-label {
+    font-weight: 500;
+    color: #555;
+}
+
+/* Map container styles */
+.map-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Button styles */
+.btn-primary {
+    padding: 0.8rem 2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container.py-5 {
+        padding-top: 140px !important;
+    }
+
+    .contact-title h1 {
+        font-size: 1.5rem;
+    }
+
+    .card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .container.py-5 {
+        padding-top: 120px !important;
+    }
+
+    .contact-title h1 {
+        font-size: 1.3rem;
+    }
+
+    .social-links a {
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+    }
+}

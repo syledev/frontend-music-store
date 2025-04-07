@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Music Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <!-- Blog Section -->
+    <div class="container py-5">
+        <h1 class="text-center mb-5">Blog</h1>
+        
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <!-- Search -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Tìm kiếm</h5>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Categories -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Danh mục</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <a href="#" class="text-decoration-none">
+                                    <i class="fas fa-angle-right me-2"></i>Nhạc cụ
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="text-decoration-none">
+                                    <i class="fas fa-angle-right me-2"></i>Phụ kiện
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="text-decoration-none">
+                                    <i class="fas fa-angle-right me-2"></i>Hướng dẫn
+                                </a>
+                            </li>                     
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Recent Posts -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Bài viết gần đây</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <a href="#" class="text-decoration-none">
+                                    <div class="d-flex align-items-center">
+                                        <img src="../assets/images/blog/post-1.jpg" alt="Recent 1" class="me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                        <div>
+                                            <h6 class="mb-0">Cách chọn đàn guitar phù hợp</h6>
+                                            <small class="text-muted">15 Tháng 3, 2024</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="mb-3">
+                                <a href="#" class="text-decoration-none">
+                                    <div class="d-flex align-items-center">
+                                        <img src="../assets/images/blog/post-2.jpg" alt="Recent 2" class="me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                        <div>
+                                            <h6 class="mb-0">Top 5 nhạc cụ dễ học</h6>
+                                            <small class="text-muted">10 Tháng 3, 2024</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-decoration-none">
+                                    <div class="d-flex align-items-center">
+                                        <img src="../assets/images/blog/post-3.jpg" alt="Recent 3" class="me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                        <div>
+                                            <h6 class="mb-0">Hướng dẫn bảo quản đàn piano</h6>
+                                            <small class="text-muted">5 Tháng 3, 2024</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                
+            </div>
+
+            <!-- Blog Posts -->
+            <div class="col-lg-9">
+                <!-- Featured Post -->
+                <div class="card mb-4">
+                    <div class="featured-image-container" style="height: 400px; overflow: hidden;">
+                        <img src="/assets/images/blog/featured-post.jpg" class="card-img-top w-100 h-100" alt="Featured Post" style="object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">Cách chọn đàn guitar phù hợp với người mới bắt đầu</h2>
+                        <p class="card-text text-muted">
+                            <small>
+                                <i class="far fa-calendar-alt me-2"></i>15 Tháng 3, 2024
+                                <i class="far fa-user ms-3 me-2"></i>Admin
+                            </small>
+                        </p>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <a href="blog-post.html" class="btn btn-primary">Đọc thêm</a>
+                    </div>
+                </div>
+                
+                <!-- Regular Posts -->
+                <div class="row">
+                    <!-- Post 1 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="post-image-container" style="height: 250px; overflow: hidden;">
+                                <img src="../assets/images/blog/post-1.jpg" class="card-img-top w-100 h-100" alt="Post 1" style="object-fit: cover;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Top 5 nhạc cụ dễ học cho người mới bắt đầu</h5>
+                                <p class="card-text text-muted">
+                                    <small>
+                                        <i class="far fa-calendar-alt me-2"></i>10 Tháng 3, 2024
+                                        <i class="far fa-user ms-3 me-2"></i>Admin
+                                    </small>
+                                </p>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <a href="blog-post.html" class="btn btn-outline-primary">Đọc thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Post 2 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="post-image-container" style="height: 250px; overflow: hidden;">
+                                <img src="../assets/images/blog/post-2.jpg" class="card-img-top w-100 h-100" alt="Post 2" style="object-fit: cover;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Hướng dẫn bảo quản đàn piano đúng cách</h5>
+                                <p class="card-text text-muted">
+                                    <small>
+                                        <i class="far fa-calendar-alt me-2"></i>5 Tháng 3, 2024
+                                        <i class="far fa-user ms-3 me-2"></i>Admin
+                                    </small>
+                                </p>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <a href="blog-post.html" class="btn btn-outline-primary">Đọc thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Post 3 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="post-image-container" style="height: 250px; overflow: hidden;">
+                                <img src="../assets/images/blog/post-3.jpg" class="card-img-top w-100 h-100" alt="Post 3" style="object-fit: cover;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Những phụ kiện không thể thiếu cho đàn guitar</h5>
+                                <p class="card-text text-muted">
+                                    <small>
+                                        <i class="far fa-calendar-alt me-2"></i>1 Tháng 3, 2024
+                                        <i class="far fa-user ms-3 me-2"></i>Admin
+                                    </small>
+                                </p>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <a href="blog-post.html" class="btn btn-outline-primary">Đọc thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Post 4 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="post-image-container" style="height: 250px; overflow: hidden;">
+                                <img src="../assets/images/blog/post-4.jpg" class="card-img-top w-100 h-100" alt="Post 4" style="object-fit: cover;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Cách chọn micro phù hợp cho giọng hát của bạn</h5>
+                                <p class="card-text text-muted">
+                                    <small>
+                                        <i class="far fa-calendar-alt me-2"></i>25 Tháng 2, 2024
+                                        <i class="far fa-user ms-3 me-2"></i>Admin
+                                    </small>
+                                </p>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <a href="blog-post.html" class="btn btn-outline-primary">Đọc thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <nav aria-label="Blog pagination" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Trước</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Sau</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/blog.js"></script>
+</body>
+</html> 

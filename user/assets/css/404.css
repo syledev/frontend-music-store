@@ -1,0 +1,123 @@
+/* Header fixed styles */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Error page styles */
+.error-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    margin-top: -80px; /* Offset the header height to truly center */
+}
+
+.error-content {
+    max-width: 800px; /* Increased from 600px */
+    padding: 4rem; /* Increased from 3rem */
+    background-color: #fff;
+    border-radius: 15px; /* Increased from 10px */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Increased from 20px */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.error-code {
+    font-size: 12rem; /* Increased from 8rem */
+    font-weight: 700;
+    color: #007bff;
+    margin: 0;
+    line-height: 1;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+}
+
+.error-title {
+    font-size: 3rem; /* Increased from 2rem */
+    font-weight: 600;
+    color: #333;
+    margin: 1.5rem 0; /* Increased from 1rem */
+}
+
+.error-message {
+    font-size: 1.4rem; /* Increased from 1.1rem */
+    color: #666;
+    margin-bottom: 2.5rem; /* Increased from 2rem */
+}
+
+.error-actions {
+    margin-top: 2.5rem; /* Increased from 2rem */
+}
+
+.error-actions .btn {
+    padding: 1rem 2rem; /* Increased from 0.8rem 1.5rem */
+    font-weight: 500;
+    font-size: 1.2rem; /* Added font size */
+    transition: all 0.3s ease;
+}
+
+.error-actions .btn:hover {
+    transform: translateY(-3px); /* Increased from -2px */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .error-content {
+        padding: 3rem;
+        margin: 1rem;
+        max-width: 90%;
+    }
+    
+    .error-code {
+        font-size: 8rem;
+    }
+    
+    .error-title {
+        font-size: 2rem;
+    }
+    
+    .error-message {
+        font-size: 1.2rem;
+    }
+
+    .error-actions .btn {
+        padding: 0.8rem 1.8rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .error-code {
+        font-size: 6rem;
+    }
+    
+    .error-title {
+        font-size: 1.8rem;
+    }
+    
+    .error-message {
+        font-size: 1.1rem;
+    }
+
+    .error-actions .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+    }
+} 
