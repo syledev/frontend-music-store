@@ -1,0 +1,126 @@
+<nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+    <div class="position-sticky pt-3">
+        <div class="text-center mb-4">
+            <a href="/index.html" class="d-flex align-items-center justify-content-center link-light text-decoration-none">
+                <i class="fas fa-music me-2"></i>
+                <span class="fs-4 fw-bold">Music Store</span>
+            </a>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/admin/pages/dashboard.html" id="nav-dashboard">
+                    <i class="fas fa-tachometer-alt me-2"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/admin/pages/products.html" id="nav-products">
+                    <i class="fas fa-box me-2"></i>
+                    Sản phẩm
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/admin/pages/categories.html" id="nav-categories">
+                    <i class="fas fa-tags me-2"></i>
+                    Danh mục
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/admin/pages/orders.html" id="nav-orders">
+                    <i class="fas fa-shopping-cart me-2"></i>
+                    Đơn hàng
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/admin/pages/customers.html" id="nav-customers">
+                    <i class="fas fa-users me-2"></i>
+                    Khách hàng
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/admin/pages/blog.html" id="nav-blog">
+                    <i class="fas fa-blog me-2"></i>
+                    Blog
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/admin/pages/contacts.html" id="nav-contacts">
+                    <i class="fas fa-envelope me-2"></i>
+                    Liên hệ
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/admin/pages/settings.html" id="nav-settings">
+                    <i class="fas fa-cog me-2"></i>
+                    Cài đặt
+                </a>
+            </li>
+        </ul>
+        <hr class="text-white">
+        <div class="dropdown px-3 mb-3">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="/admin/assets/images/admin-avatar.jpg" alt="Admin" width="32" height="32" class="rounded-circle me-2" id="admin-avatar">
+                <strong id="admin-name">Admin</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" href="/admin/pages/profile.html">Hồ sơ</a></li>
+                <li><a class="dropdown-item" href="/admin/pages/settings.html">Cài đặt</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#" id="logout-btn">Đăng xuất</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+$(document).ready(function() {
+    // Đánh dấu menu active dựa trên đường dẫn hiện tại
+    const currentPath = window.location.pathname;
+    
+    // Reset tất cả menu trước
+    $(".nav-link").removeClass("active");
+    
+    // Đánh dấu menu active
+    if (currentPath.includes('dashboard')) {
+        $("#nav-dashboard").addClass("active");
+    } else if (currentPath.includes('products')) {
+        $("#nav-products").addClass("active");
+    } else if (currentPath.includes('categories')) {
+        $("#nav-categories").addClass("active");
+    } else if (currentPath.includes('orders')) {
+        $("#nav-orders").addClass("active");
+    } else if (currentPath.includes('customers')) {
+        $("#nav-customers").addClass("active");
+    } else if (currentPath.includes('blog')) {
+        $("#nav-blog").addClass("active");
+    } else if (currentPath.includes('contacts')) {
+        $("#nav-contacts").addClass("active");
+    } else if (currentPath.includes('settings')) {
+        $("#nav-settings").addClass("active");
+    }
+    
+    // Lấy thông tin admin từ localStorage
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser && currentUser.role === 'admin') {
+        $("#admin-name").text(currentUser.displayName || currentUser.email || "Admin");
+        
+        // Nếu có avatar thì hiển thị
+        if (currentUser.avatar) {
+            $("#admin-avatar").attr('src', currentUser.avatar);
+        }
+    }
+    
+    // Sự kiện đăng xuất
+    $("#logout-btn").click(function(e) {
+        e.preventDefault();
+        
+        // Xóa thông tin đăng nhập
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('isAdminLoggedIn');
+        
+        // Chuyển về trang đăng nhập
+        window.location.href = '/user/pages/login.html';
+    });
+});
+</script> 

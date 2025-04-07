@@ -1,0 +1,103 @@
+/**
+ * Dashboard CSS
+ */
+
+/* Statistic Cards */
+.card {
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(34, 39, 46, 0.1);
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.card-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.bg-primary {
+    background-color: #4e73df !important;
+}
+
+.bg-success {
+    background-color: #1cc88a !important;
+}
+
+.bg-warning {
+    background-color: #f6c23e !important;
+}
+
+.bg-danger {
+    background-color: #e74a3b !important;
+}
+
+/* Chart Containers */
+.chart-container {
+    position: relative;
+    height: 100%;
+}
+
+/* Data Tables */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table thead th {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+.table tbody td {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+/* Status Badges */
+.badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.35em 0.65em;
+}
+
+/* Contact List */
+.list-group-item-action:hover {
+    background-color: #f8f9fa;
+}
+
+.list-group-item h6 {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.list-group-item p {
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+}
+
+.list-group-item small {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+/* Footer */
+footer {
+    margin-top: 2rem;
+    padding: 1rem 0;
+    font-size: 0.85rem;
+} 
