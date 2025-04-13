@@ -1,0 +1,149 @@
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.875rem;
+}
+
+.status-active {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-inactive {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+.status-blocked {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.membership-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.875rem;
+}
+
+.membership-normal {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.membership-vip {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.membership-premium {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.action-buttons .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+.action-buttons .btn + .btn {
+    margin-left: 0.5rem;
+}
+
+/* Modal styles */
+.modal-lg {
+    max-width: 800px;
+}
+
+.customer-details .info-group {
+    margin-bottom: 1rem;
+}
+
+.customer-details label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.25rem;
+}
+
+.customer-details p {
+    margin-bottom: 0;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+/* Search and filter section */
+.input-group .btn {
+    border-color: #ced4da;
+}
+
+.form-select:focus,
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Table responsive styles */
+@media (max-width: 768px) {
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .action-buttons .btn {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.75rem;
+    }
+    
+    .status-badge,
+    .membership-badge {
+        padding: 3px 8px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Error state */
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Success message */
+.success-message {
+    color: #28a745;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Order history table */
+#orderHistoryTable {
+    font-size: 0.875rem;
+}
+
+#orderHistoryTable th {
+    background-color: #f8f9fa;
+}
+
+/* Truncate long text in table cells */
+.table td {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Form validation styles */
+.form-control.is-invalid,
+.form-select.is-invalid {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+} 
