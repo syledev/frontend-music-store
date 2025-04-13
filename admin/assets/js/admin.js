@@ -162,4 +162,37 @@ const activateMenu = () => {
             item.classList.add('active');
         }
     });
-}; 
+};
+
+// Activate current menu item based on URL
+function activateMenu() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        // Remove active class from all links
+        link.classList.remove('active');
+        
+        // Add active class to current page link
+        if (currentPath.includes(link.getAttribute('href'))) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Show notification
+function showNotification(message, type = 'success') {
+    alert(message); // In a real app, use a proper notification system
+}
+
+// Confirm delete
+function confirmDelete(type, id) {
+    return confirm(`Bạn có chắc chắn muốn xóa ${type} này không?`);
+}
+
+// Format date
+function formatDate(dateString) {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('vi-VN');
+} 
