@@ -1,0 +1,96 @@
+/**
+ * Products Management CSS
+ */
+
+/* Products table */
+.table img.img-thumbnail {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+/* Product image in modal */
+#currentProductImage {
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: contain;
+}
+
+/* Status badges */
+.badge.bg-success {
+    background-color: #28a745 !important;
+}
+
+.badge.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+.badge.bg-warning {
+    background-color: #ffc107 !important;
+}
+
+.badge.bg-info {
+    background-color: #17a2b8 !important;
+}
+
+.badge.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+/* Product form */
+.form-control-file {
+    padding: 0.375rem 0.75rem;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.custom-file-upload {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+/* Action buttons */
+.btn-action {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Filter row */
+.filter-row {
+    margin-bottom: 1rem;
+}
+
+/* Pagination custom styles */
+.pagination .page-item.active .page-link {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+.pagination .page-link {
+    color: #6f42c1;
+}
+
+.pagination .page-link:hover {
+    color: #5a32a3;
+}
+
+/* Modal size adjustment */
+.modal-lg {
+    max-width: 800px;
+}
+
+/* Product specifications textarea */
+#productSpecs, #editProductSpecs {
+    font-family: monospace;
+    font-size: 0.9rem;
+} 
