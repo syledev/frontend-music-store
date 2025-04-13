@@ -1,0 +1,66 @@
+/**
+ * Categories Management CSS
+ */
+
+/* Category table */
+.table img.img-thumbnail {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+/* Category image in modal */
+#currentCategoryImage {
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: contain;
+}
+
+/* Category chart container */
+.chart-container {
+    position: relative;
+    height: 250px;
+}
+
+/* Category statistics card */
+.category-stats-card .card-body {
+    padding: 1rem;
+}
+
+.category-stats-card p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.category-stats-card strong {
+    color: #495057;
+}
+
+/* Action buttons */
+.btn-action {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Status badges */
+.badge.bg-success {
+    background-color: #28a745 !important;
+}
+
+.badge.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+/* Pagination custom styles */
+.pagination .page-item.active .page-link {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+.pagination .page-link {
+    color: #6f42c1;
+}
+
+.pagination .page-link:hover {
+    color: #5a32a3;
+} 
