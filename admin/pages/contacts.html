@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Liên hệ - Music Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/contacts.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div id="sidebar-container"></div>
+
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Quản lý Liên hệ</h1>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm liên hệ...">
+                            <button class="btn btn-outline-secondary" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select" id="statusFilter">
+                            <option value="">Tất cả trạng thái</option>
+                            <option value="new">Mới</option>
+                            <option value="processing">Đang xử lý</option>
+                            <option value="resolved">Đã xử lý</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select" id="timeFilter">
+                            <option value="">Tất cả thời gian</option>
+                            <option value="today">Hôm nay</option>
+                            <option value="week">Tuần này</option>
+                            <option value="month">Tháng này</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Contacts Table -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Họ tên</th>
+                                        <th>Email</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Chủ đề</th>
+                                        <th>Ngày gửi</th>
+                                        <th>Trạng thái</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contactsTable">
+                                    <!-- Table content will be loaded dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- View Contact Modal -->
+    <div class="modal fade" id="viewContactModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Chi tiết Liên hệ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p><strong>Họ tên:</strong> <span id="viewContactName"></span></p>
+                            <p><strong>Email:</strong> <span id="viewContactEmail"></span></p>
+                            <p><strong>Số điện thoại:</strong> <span id="viewContactPhone"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Chủ đề:</strong> <span id="viewContactSubject"></span></p>
+                            <p><strong>Ngày gửi:</strong> <span id="viewContactDate"></span></p>
+                            <p><strong>Trạng thái:</strong> <span id="viewContactStatus"></span></p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h6>Nội dung tin nhắn:</h6>
+                        <p id="viewContactMessage" class="border rounded p-3 bg-light"></p>
+                    </div>
+                    <div class="mb-3">
+                        <h6>Phản hồi:</h6>
+                        <textarea class="form-control" id="contactReply" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" id="sendReply">Gửi phản hồi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Common Admin JS -->
+    <script src="../assets/js/admin.js"></script>
+    <!-- Page Specific JS -->
+    <script src="../assets/js/contacts.js"></script>
+</body>
+</html> 
