@@ -1,0 +1,246 @@
+/* Blog management styles */
+
+/* Main content area */
+.content-wrapper {
+    margin-left: 250px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+/* Header section */
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+/* Search and filters */
+.search-filters {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    padding-left: 2.5rem;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.search-box i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #95a5a6;
+}
+
+/* Blog table styles */
+.blog-table {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.blog-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #2c3e50;
+    padding: 1rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.blog-table td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* Blog thumbnail styles */
+.blog-thumbnail {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.blog-thumbnail:hover {
+    transform: scale(1.05);
+}
+
+/* Status badges */
+.badge {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 20px;
+}
+
+.bg-success {
+    background-color: #27ae60 !important;
+}
+
+.bg-warning {
+    background-color: #f39c12 !important;
+}
+
+.bg-secondary {
+    background-color: #7f8c8d !important;
+}
+
+/* Action buttons */
+.btn-outline-primary {
+    color: #3498db;
+    border-color: #3498db;
+}
+
+.btn-outline-primary:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.btn-outline-danger {
+    color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.btn-outline-danger:hover {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+/* Add blog button */
+.btn-add-blog {
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    border-radius: 6px;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-add-blog:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+}
+
+.btn-add-blog i {
+    margin-right: 0.5rem;
+}
+
+/* Blog modal */
+.modal-content {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.modal-header {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 1.5rem;
+}
+
+.modal-title {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    padding: 0.75rem;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Image preview */
+#imagePreview {
+    margin-top: 1rem;
+}
+
+#imagePreview img {
+    max-width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .content-wrapper {
+        margin-left: 70px;
+        padding: 1rem;
+    }
+
+    .blog-thumbnail {
+        width: 80px;
+        height: 60px;
+    }
+
+    .search-filters {
+        padding: 1rem;
+    }
+
+    .blog-table {
+        font-size: 0.9rem;
+    }
+
+    .badge {
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+} 

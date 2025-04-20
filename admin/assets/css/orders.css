@@ -1,0 +1,138 @@
+/**
+ * Orders Management CSS
+ */
+
+/* Table styles */
+.table img.img-thumbnail {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+/* Status dropdown */
+.status-select {
+    min-width: 140px;
+    font-size: 0.875rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Status colors */
+.status-select option[value="Chờ xác nhận"] {
+    background-color: #6c757d;
+    color: white;
+}
+
+.status-select option[value="Đã xác nhận"] {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.status-select option[value="Đang giao"] {
+    background-color: #ffc107;
+    color: black;
+}
+
+.status-select option[value="Đã giao"] {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-select option[value="Đã hủy"] {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Order detail modal */
+.modal-lg {
+    max-width: 900px;
+}
+
+/* Order timeline */
+.timeline {
+    position: relative;
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    height: 100%;
+    width: 2px;
+    background-color: #e9ecef;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 2.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: #6f42c1;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px #e9ecef;
+}
+
+.timeline-content {
+    padding-top: 0.25rem;
+}
+
+.timeline-title {
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.timeline-date {
+    margin-bottom: 0;
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+/* Action buttons */
+.btn-action {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Pagination custom styles */
+.pagination .page-item.active .page-link {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+.pagination .page-link {
+    color: #6f42c1;
+}
+
+.pagination .page-link:hover {
+    color: #5a32a3;
+}
+
+/* Modal order items */
+#orderItemsTable img.img-thumbnail {
+    width: 50px;
+    height: 50px;
+}
+
+/* Custom date range */
+#customDateRange {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+} 

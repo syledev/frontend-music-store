@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soạn thảo Blog - Music Store</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Quill Editor CSS -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/blog-editor.css">
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div id="sidebar-container" class="col-auto"></div>
+
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <!-- Header -->
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+                <h1>Soạn thảo Blog</h1>
+                <div class="actions">
+                    <button class="btn btn-outline-secondary me-2" id="btnPreview">
+                        <i class="fas fa-eye"></i> Xem trước
+                    </button>
+                    <button class="btn btn-primary" id="btnPublish">
+                        <i class="fas fa-paper-plane"></i> Xuất bản
+                    </button>
+                </div>
+            </div>
+
+            <!-- Blog Editor Form -->
+            <div class="blog-editor-container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <!-- Main Editor Area -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="form-group mb-4">
+                                    <input type="text" class="form-control form-control-lg" id="blogTitle" 
+                                           placeholder="Tiêu đề bài viết">
+                                </div>
+                                
+                                <!-- Quill Editor Container -->
+                                <div id="editor-container">
+                                    <!-- Editor content will be here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <!-- Blog Settings -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Cài đặt bài viết</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- Category -->
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Danh mục</label>
+                                    <select class="form-select" id="blogCategory">
+                                        <option value="guitar">Guitar</option>
+                                        <option value="piano">Piano</option>
+                                        <option value="drum">Trống</option>
+                                        <option value="violin">Violin</option>
+                                        <option value="news">Tin tức</option>
+                                    </select>
+                                </div>
+
+                                <!-- Featured Image -->
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Ảnh đại diện</label>
+                                    <div class="featured-image-container">
+                                        <input type="file" class="form-control" id="featuredImage" accept="image/*">
+                                        <div id="featuredImagePreview" class="mt-2"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Tags -->
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Tags</label>
+                                    <input type="text" class="form-control" id="blogTags" 
+                                           placeholder="Nhập tags, phân cách bằng dấu phẩy">
+                                </div>
+
+                                <!-- Status -->
+                                <div class="form-group">
+                                    <label class="form-label">Trạng thái</label>
+                                    <select class="form-select" id="blogStatus">
+                                        <option value="draft">Bản nháp</option>
+                                        <option value="published">Xuất bản</option>
+                                        <option value="hidden">Ẩn</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SEO Settings -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Tối ưu SEO</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Meta Title</label>
+                                    <input type="text" class="form-control" id="metaTitle">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Meta Description</label>
+                                    <textarea class="form-control" id="metaDescription" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">URL Slug</label>
+                                    <input type="text" class="form-control" id="urlSlug">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Preview Modal -->
+<div class="modal fade" id="previewModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xem trước bài viết</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="previewContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script src="../assets/js/blog-editor.js"></script>
+
+</body>
+</html> 

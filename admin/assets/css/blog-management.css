@@ -1,0 +1,89 @@
+.table img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.875rem;
+}
+
+.status-published {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-draft {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+.action-buttons .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+.action-buttons .btn + .btn {
+    margin-left: 0.5rem;
+}
+
+/* Modal styles */
+.modal-lg {
+    max-width: 800px;
+}
+
+#postContent {
+    min-height: 200px;
+    resize: vertical;
+}
+
+/* Search and filter section */
+.input-group .btn {
+    border-color: #ced4da;
+}
+
+.form-select:focus,
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Table responsive styles */
+@media (max-width: 768px) {
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .action-buttons .btn {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.75rem;
+    }
+    
+    .status-badge {
+        padding: 3px 8px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Error state */
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Success message */
+.success-message {
+    color: #28a745;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+} 
